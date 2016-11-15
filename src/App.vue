@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <button v-on:click="$root.page.state = 'home'">Home</button>
+    <button v-on:click="$root.page.state = 'playing'">Playing</button>
+    <home v-if="$root.page.state === 'home'"></home>
+    <playing v-if="$root.page.state === 'playing'"></playing>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+  /* Components */
+  // pages
+  import Home from './pages/Home'
+  import Playing from './pages/Playing'
 
-export default {
-  name: 'app',
-  components: {
-    Hello
+  export default {
+    name: 'app',
+    components: {
+      Home,
+      Playing
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  /* SASS imports */
+  @import "sass/Variables"
+  @import "sass/Mixins"
+  @import "sass/General"
+
+  #app
+    opacity: 1
+
 </style>
