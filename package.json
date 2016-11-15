@@ -13,7 +13,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "vue": "^2.0.1"
+    "avsc": "^4.1.9",
+    "mongodb": "^2.2.11",
+    "performance-now": "^0.2.0",
+    "vue": "^2.0.1",
+    "ws": "^1.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
