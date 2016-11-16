@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <!-- use router-link component for navigation. -->
-    <!-- specify the link by passing the `to` prop. -->
-    <!-- <router-link> will be rendered as an `<a>` tag by default -->
-    <router-link to="/">Go to home</router-link>
-    <router-link to="/playing">Go to playing</router-link>
+    <top-nav></top-nav>
 
     <!-- route outlet -->
     <!-- component matched by the route will render here -->
@@ -17,9 +13,13 @@
   import VueRouter from 'vue-router'
 
   /* Components */
+  import TopNav from './parts/TopNav'
 
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      TopNav
+    }
   }
 </script>
 
