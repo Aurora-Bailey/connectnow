@@ -9,20 +9,22 @@
   -moz-box-sizing: border-box
   box-sizing: border-box
 
+html, body
+  height: 100%
+
 body
   font-family: Raleway, Helvetica, sans-serif
   line-height: inherit
-  background-color: $base
+  background-color: darken($base, 10%)
   color: $base-alt
-  position: relative
 
 button, input, select, textarea
   font-family: inherit
-  font-size: inherit
+  font-size: 16px
   line-height: inherit
 
-  background-color: $base-alt
-  color: $base
+  background-color: $base
+  color: $base-alt
 
 a, a:link, a:visited, a:hover, a:active
   color: inherit

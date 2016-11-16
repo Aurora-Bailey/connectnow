@@ -33,6 +33,9 @@
   @import "sass/General"
 
   #app
-    opacity: 1
+    position: relative
+    min-height: 100%
+    overflow-x: hidden
+    overflow-y: auto
 
 </style>

@@ -1,6 +1,7 @@
 // Core
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import App from './App'
 import VueData from './modules/VueData'
 
@@ -14,8 +15,11 @@ import Profile from './pages/Profile'
 import Logout from './pages/Logout'
 import NotFound from './pages/NotFound'
 
-// Router
+// The Vue thing
 Vue.use(VueRouter)
+Vue.use(VueResource)
+
+// Router
 const routes = [
   { path: '/', component: Home },
   { path: '/search', component: Search },
