@@ -6,14 +6,25 @@ import VueData from './modules/VueData'
 
 // Pages
 import Home from './pages/Home'
-import Playing from './pages/Playing'
+import Search from './pages/Search'
+import Matches from './pages/Matches'
+import Connections from './pages/Connections'
+import Groups from './pages/Groups'
+import Profile from './pages/Profile'
+import Logout from './pages/Logout'
+import NotFound from './pages/NotFound'
 
 // Router
 Vue.use(VueRouter)
 const routes = [
   { path: '/', component: Home },
-  { path: '/playing', component: Playing },
-  { path: '*', component: Home } // 404 Page not found
+  { path: '/search', component: Search },
+  { path: '/matches', component: Matches },
+  { path: '/connections', component: Connections },
+  { path: '/groups', component: Groups },
+  { path: '/profile', component: Profile },
+  { path: '/logout', component: Logout },
+  { path: '*', component: NotFound }
 ]
 const router = new VueRouter({
   // History mode makes links prettier, but requires dedicated hosting. (or in s3 set 404 to index.html)

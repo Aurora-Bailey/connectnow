@@ -9,7 +9,7 @@
 
       <div class="mobile-toggle" v-on:click="toggle=!toggle"><i class="fa fa-bars"></i></div>
       <div class="mobile-contain" :class="{open: toggle}">
-        <router-link class="nav-link search" to="/playing">search</router-link>
+        <router-link class="nav-link search" to="/search">search</router-link>
         <router-link class="nav-link matches" to="/matches">matches</router-link>
         <router-link class="nav-link connections" to="/connections">connections</router-link>
         <router-link class="nav-link groups" to="/groups">groups</router-link>

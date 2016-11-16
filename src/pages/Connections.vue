@@ -1,6 +1,6 @@
 <template>
-  <div class="playing" >
-    playing
+  <div class="connections" >
+    connections
   </div>
 </template>
 
@@ -8,7 +8,7 @@
   /* Components */
 
   export default {
-    name: 'playing'
+    name: 'connections'
   }
 </script>
 
@@ -18,7 +18,7 @@
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
-  .playing
+  .connections
     color: red
 
 </style>
