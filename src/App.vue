@@ -4,7 +4,10 @@
 
     <!-- route outlet -->
     <!-- component matched by the route will render here -->
-    <router-view></router-view>
+
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
