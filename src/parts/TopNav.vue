@@ -3,8 +3,7 @@
     <!-- use router-link component for navigation. -->
     <!-- specify the link by passing the `to` prop. -->
     <!-- <router-link> will be rendered as an `<a>` tag by default -->
-    <router-link to="/">Go to home</router-link>
-    <router-link to="/playing">Go to playing</router-link>
+    <router-link v-for="link in links" v-bind:class="[link.class]" v-bind:to="link.route">Go to {{link.text}}</router-link>
   </div>
 </template>
 
@@ -15,7 +14,10 @@
     name: 'top-nav',
     data () {
       return {
-        msg: 'asdf'
+        links: [
+          {class: 'home', text: 'Home', route: '/'},
+          {class: 'playing', text: 'Playing', route: '/playing'}
+        ]
       }
     }
   }
