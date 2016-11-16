@@ -21,6 +21,8 @@
 </template>
 
 <script>
+  /* Components */
+
   export default {
     name: 'hello',
     data () {

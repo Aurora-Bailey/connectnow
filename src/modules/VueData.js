@@ -5,12 +5,6 @@ let Data = {
     compatible: GlobalSettings.version.compatible,
     micro: GlobalSettings.version.micro
   },
-  page: {
-    state: 'init',
-    url: '',
-    title: 'Init',
-    history: []
-  },
   user: {
     id: 0,
     name: ''

@@ -8,7 +8,7 @@
 
 <script>
   /* Components */
-  // parts
+  // Parts
   import Hello from '../parts/Hello'
 
   export default {

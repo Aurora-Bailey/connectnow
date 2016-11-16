@@ -1,24 +1,25 @@
 <template>
   <div id="app">
-    <button v-on:click="$root.page.state = 'home'">Home</button>
-    <button v-on:click="$root.page.state = 'playing'">Playing</button>
-    <home v-if="$root.page.state === 'home'"></home>
-    <playing v-if="$root.page.state === 'playing'"></playing>
+    <!-- use router-link component for navigation. -->
+    <!-- specify the link by passing the `to` prop. -->
+    <!-- <router-link> will be rendered as an `<a>` tag by default -->
+    <router-link to="/home">Go to home</router-link>
+    <router-link to="/playing">Go to playing</router-link>
+
+    <!-- route outlet -->
+    <!-- component matched by the route will render here -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+  /* Core */
+  import VueRouter from 'vue-router'
+
   /* Components */
-  // pages
-  import Home from './pages/Home'
-  import Playing from './pages/Playing'
 
   export default {
-    name: 'app',
-    components: {
-      Home,
-      Playing
-    }
+    name: 'app'
   }
 </script>
 
