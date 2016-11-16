@@ -11,10 +11,13 @@ import Playing from './pages/Playing'
 // Router
 Vue.use(VueRouter)
 const routes = [
-  { path: '/home', component: Home },
-  { path: '/playing', component: Playing }
+  { path: '/', component: Home },
+  { path: '/playing', component: Playing },
+  { path: '*', component: Home } // 404 Page not found
 ]
 const router = new VueRouter({
+  // History mode makes links prettier, but requires dedicated hosting. (or in s3 set 404 to index.html)
+  mode: 'history',
   routes // short for routes: routes
 })
 
