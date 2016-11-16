@@ -39,6 +39,7 @@
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
+  /* SASS Variables */
   $nav-height: 65px
 
   .top-nav
@@ -62,6 +63,9 @@
     font-weight: bold
     text-transform: uppercase
     vertical-align: text-top
+
+  .router-link-active
+    color: $accent
 
   .mobile-toggle
     display: none
