@@ -5,6 +5,11 @@ import VueResource from 'vue-resource'
 import App from './App'
 import VueData from './modules/VueData'
 
+// Bootstrap
+import 'jquery'
+import 'tether'
+import 'bootstrap'
+
 // Pages
 import Home from './pages/Home'
 import Search from './pages/Search'
