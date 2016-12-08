@@ -58,11 +58,7 @@
     name: 'matches',
     data () {
       return {
-        matches: [
-          {picture: 'https://randomuser.me/api/portraits/med/men/83.jpg', age: 45, location: 'Maasdriel, Zeeland'},
-          {picture: '', age: 0, location: ''},
-          {picture: '', age: 0, location: ''}
-        ],
+        matches: [],
         preview: {}
       }
     },
