@@ -6,10 +6,10 @@ import App from './App'
 import VueData from './modules/VueData'
 import Routes from './Routes'
 
-// Bootstrap
+/* Bootstrap
 import 'jquery'
 import 'tether'
-import 'bootstrap'
+import 'bootstrap' */
 
 // The Vue thing
 Vue.use(VueRouter)

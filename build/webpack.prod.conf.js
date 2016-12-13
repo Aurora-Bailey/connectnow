@@ -27,13 +27,13 @@ var webpackConfig = merge(baseWebpackConfig, {
     })
   },
   plugins: [
-    new webpack.ProvidePlugin({
+    /* Bootstrap new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
       jquery: 'jquery',
       "Tether": 'tether',
       "window.Tether": "tether"
-    }),
+    }),*/
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env

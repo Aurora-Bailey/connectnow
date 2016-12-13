@@ -28,7 +28,7 @@
 
 <style lang="sass">
   /* SASS imports */
-  @import '../node_modules/bootstrap/scss/bootstrap.scss'
+  // Bootstrap @import '../node_modules/bootstrap/scss/bootstrap.scss'
   @import "sass/Variables"
   @import "sass/Mixins"
   @import "sass/General"

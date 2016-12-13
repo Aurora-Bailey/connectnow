@@ -7,7 +7,7 @@
       <!-- <router-link> will be rendered as an `<a>` tag by default -->
       <router-link class="nav-link home" to="/" tag="div"></router-link>
 
-      <div class="mobile-toggle" v-on:click="toggle=!toggle"><i class="fa fa-bars"></i></div>
+      <div class="mobile-toggle" v-on:click="toggle=!toggle"><i class="material-icons">&#xE5D2;</i></div>
       <div class="mobile-contain" :class="{open: toggle}">
         <router-link class="nav-link search" to="/search">search</router-link>
         <router-link class="nav-link matches" to="/matches">matches</router-link>
