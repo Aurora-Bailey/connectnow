@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home">
     <hello></hello>
     {{$root.version.micro}}
   </div>
@@ -19,12 +19,12 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
+<style lang="sass">
   /* SASS imports */
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
-  .home
+  #home
     font-family: 'Avenir', Helvetica, Arial, sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale

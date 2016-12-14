@@ -1,5 +1,5 @@
 <template>
-  <div class="groups" >
+  <div id="groups" >
     groups
   </div>
 </template>
@@ -13,12 +13,12 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
+<style lang="sass">
   /* SASS imports */
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
-  .groups
+  #groups
     color: red
 
 </style>

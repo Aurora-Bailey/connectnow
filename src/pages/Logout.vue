@@ -1,5 +1,5 @@
 <template>
-  <div class="logout" >
+  <div id="logout" >
     logout <br>
     logout <br>
     logout <br>
@@ -60,12 +60,12 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
+<style lang="sass">
   /* SASS imports */
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
-  .logout
+  #logout
     color: red
 
 </style>

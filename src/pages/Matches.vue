@@ -1,5 +1,5 @@
 <template>
-  <div class="matches" >
+  <div id="matches" >
     <div class="search-by">
       <div class="title">Search</div>
 
@@ -92,66 +92,67 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="sass" scoped>
+<style lang="sass">
   /* SASS imports */
   @import "../sass/Variables"
   @import "../sass/Mixins"
 
-  .matches
-    opacity: 1
+  #matches
 
-  .search-by
-    position: fixed
-    top: 65px // for top nav
-    left: 0
-    bottom: 0
-    z-index: 999
-    display: inline-block
-    width: 210px
-    text-align: center
-    box-shadow: 5px 10px 15px 5px rgba(0,0,0,.1);
-    border-top: 1px solid darken($base, 10%)
-    background-color: $base
-
-    .title
-      margin: 30px 0
-
-    .category
-      margin: 20px 0
-      padding: 0 15px
-
-      .text
-        margin-bottom: 10px
-
-      .input
-        width: 100%
-
-  .multiple-matches
-    margin-left: 250px
-    margin-top: 40px
-    width: 550px
-
-    .card
+    .search-by
+      position: fixed
+      top: 65px // for top nav
+      left: 0
+      bottom: 0
+      z-index: 999
+      display: inline-block
+      width: 210px
+      text-align: center
+      box-shadow: 5px 10px 15px 5px rgba(0,0,0,.1);
+      border-top: 1px solid darken($base, 10%)
       background-color: $base
-      padding: 10px
-      margin: 10px 0
-      box-shadow: 0 1px 2px rgba(0,0,0,.1);
-      white-space: nowrap
 
-      .info
-        display: inline-block
-        vertical-align: text-top
-        line-height: 75px
-        margin: 10px
-        text-transform: capitalize
+      .title
+        margin: 30px 0
+        font-size: 1.3em
+        text-decoration: underline
 
-      .picture
-        width: 75px
-        height: 75px
-        border-radius: 75px
-        background-position: center
-        background-size: cover
+      .category
+        margin: 20px 0
+        padding: 0 15px
+
+        .text
+          margin-bottom: 10px
+
+        .input
+          width: 100%
+
+    .multiple-matches
+      margin-left: 250px
+      margin-top: 40px
+      width: 550px
+
+      .card
+        background-color: $base
+        padding: 10px
+        margin: 10px 0
         box-shadow: 0 1px 2px rgba(0,0,0,.1);
+        white-space: nowrap
+
+        .info
+          display: inline-block
+          vertical-align: text-top
+          line-height: 75px
+          margin: 10px
+          text-transform: capitalize
+
+        .picture
+          width: 75px
+          height: 75px
+          border-radius: 75px
+          background-position: center
+          background-size: cover
+          box-shadow: 0 1px 2px rgba(0,0,0,.1);
 
   .asdf
     display: none

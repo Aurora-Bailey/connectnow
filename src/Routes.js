@@ -1,6 +1,5 @@
 // Pages
 import Home from './pages/Home'
-import Search from './pages/Search'
 import Matches from './pages/Matches'
 import Connections from './pages/Connections'
 import Groups from './pages/Groups'
@@ -11,7 +10,6 @@ import NotFound from './pages/NotFound'
 // Router
 export default [
   { path: '/', component: Home },
-  { path: '/search', component: Search },
   { path: '/matches', component: Matches },
   { path: '/connections', component: Connections },
   { path: '/groups', component: Groups },

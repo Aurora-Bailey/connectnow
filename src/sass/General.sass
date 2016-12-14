@@ -6,8 +6,11 @@
 *
   margin: 0
   padding: 0
-  -webkit-box-sizing: border-box
-  -moz-box-sizing: border-box
+
+*, *:before, *:after
+  box-sizing: inherit
+
+html
   box-sizing: border-box
 
 html, body
@@ -16,23 +19,25 @@ html, body
 body
   font-family: Raleway, Helvetica, sans-serif
   line-height: inherit
-  background-color: darken($base, 10%)
+  font-size: inherit
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  background-color: $base
   color: $base-alt
 
 button, input, select, textarea
   font-family: inherit
-  font-size: 16px
+  font-size: inherit
   line-height: inherit
-
   background-color: $base
   color: $base-alt
 
 a, a:link, a:visited, a:hover, a:active
-  color: inherit
+  color: #0000EE
   text-decoration: none
 
 a:hover, a:active
-  color: $primary
+  color: lighten(#0000EE, 20%)
 
 .slide-fade-enter-active
   transition: all .2s ease
