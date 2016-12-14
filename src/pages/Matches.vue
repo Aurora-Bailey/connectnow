@@ -1,21 +1,11 @@
 <template>
   <div class="matches" >
     <div class="search-by">
-      <div class="title">Search By</div>
+      <div class="title">Search</div>
 
       <div class="category individual-tag">
         <div class="text">Individual Tag:</div>
         <input class="input" type="text">
-      </div>
-
-      <div class="category proximity">
-        <div class="text">Proximity:</div>
-        <input class="input" type="range">
-      </div>
-
-      <div class="category age">
-        <div class="text">Age:</div>
-        <input class="input" type="range">
       </div>
 
       <div class="category sex">
@@ -27,9 +17,28 @@
         </select>
       </div>
 
+      <div class="category proximity">
+        <div class="text">Proximity:</div>
+        <div class="multirange">
+          <input class="input" value="10" type="range">
+          <input class="input" type="range">
+        </div>
+      </div>
+
+      <div class="category age">
+        <div class="text">Age:</div>
+        <div class="multirange">
+          <input class="input" value="10" type="range">
+          <input class="input" type="range">
+        </div>
+      </div>
+
       <div class="category experience">
         <div class="text">Experience:</div>
-        <input class="input" type="range">
+        <div class="multirange">
+          <input class="input" value="10" type="range">
+          <input class="input" type="range">
+        </div>
       </div>
 
       <div class="category joke">
