@@ -109,8 +109,8 @@
       width: 210px
       text-align: center
       box-shadow: 5px 10px 15px 5px rgba(0,0,0,.1);
-      border-top: 1px solid darken($base, 10%)
-      background-color: $base
+      border-top: 1px solid color-level(background, -1)
+      background-color: color(background)
 
       .title
         margin: 30px 0
@@ -133,7 +133,7 @@
       width: 550px
 
       .card
-        background-color: $base
+        background-color: color(background)
         padding: 10px
         margin: 10px 0
         box-shadow: 0 1px 2px rgba(0,0,0,.1);

@@ -5,7 +5,7 @@
       <!-- use router-link component for navigation. -->
       <!-- specify the link by passing the `to` prop. -->
       <!-- <router-link> will be rendered as an `<a>` tag by default -->
-      <router-link class="nav-link home" to="/" tag="div"></router-link>
+      <router-link class="nav-link home" to="/"></router-link>
 
       <div class="mobile-toggle" v-on:click="toggle=!toggle"><i class="material-icons">&#xE5D2;</i></div>
       <div class="mobile-contain" :class="{open: toggle}">
@@ -51,7 +51,7 @@
       left: 0
       right: 0
       box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.08)
-      background-color: $base
+      background-color: color(background)
 
     .nav-link
       height: $nav-height
@@ -62,9 +62,13 @@
       font-weight: bold
       text-transform: uppercase
       vertical-align: text-top
+      color: color-text(color(background), secondary)
+
+      &:hover
+        color: color-text(color(background), primary)
 
     .router-link-active
-      color: $accent
+      color: color(primary)
 
     .mobile-toggle
       display: none
@@ -112,10 +116,7 @@
         float: none
         display: block
         max-height: 0
-        -webkit-box-shadow: inset 0 1px 1px 0 darken($base, 10%)
-        -moz-box-shadow: inset 0 1px 1px 0 darken($base, 10%)
-        box-shadow: inset 0 1px 1px 0 darken($base, 10%)
-        -webkit-transition: max-height .5s ease
+        box-shadow: inset 0 1px 1px 0 color-level(background, -1)
         transition: max-height .5s ease
 
         &.open

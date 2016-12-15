@@ -1,0 +1,63 @@
+/* SASS imports */
+@import "Variables";
+@import "Mixins";
+@import "lib/input-range";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Raleway, Helvetica, sans-serif;
+  line-height: inherit;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: color-level(background, -1);
+  color: color-text(color-level(background, -1), primary);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background-color: color(background);
+  color: color-text(color(background), primary);
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: #0000EE;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: lighten(#0000EE, 20%);
+}
+
+/* Vue.js Transitions */
+.slide-fade-enter-active {
+  transition: all 0.2s ease;
+  transition-delay: 0.2s;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.2s ease;
+}
+
+.slide-fade-enter, .slide-fade-leave-active {
+  margin-top: 30px;
+  opacity: 0;
+}

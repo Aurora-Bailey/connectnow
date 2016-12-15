@@ -1,0 +1,58 @@
+@import "Variables";
+
+/* Responsive Design */
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+    @content;
+  }
+}
+@else {
+  @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Please make sure it is defined in `$breakpoints` map.";
+}
+}
+
+/* Colors */
+@function color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  }
+
+  @warn "Unknown `#{$color-name}` in $colors.";
+
+  @return null;
+}
+
+@function color-level($color-name, $level) {
+  $color: color($color-name);
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, abs($level) * $color-interval);
+}
+
+/* Text */
+@function color-text($context-color, $text-type) {
+  @if (lightness($context-color) > 50) {
+    @if map-has-key($text-dark-opacity, $text-type) {
+      @return rgba(black, map-get($text-dark-opacity, $text-type));
+    }
+    @return black;
+  } @else {
+    @if map-has-key($text-light-opacity, $text-type) {
+      @return rgba(white, map-get($text-light-opacity, $text-type));
+    }
+    @return white;
+  }
+
+}
+
+/* z-index layers */
+@function z($layer-name) {
+  @if map-has-key($z-layers, $layer-name) {
+    @return map-get($z-layers, $layer-name);
+  }
+
+  @warn "Unknown `#{$layer-name}` in $z-layers.";
+
+  @return null;
+}

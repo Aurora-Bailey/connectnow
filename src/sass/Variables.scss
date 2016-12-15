@@ -1,0 +1,41 @@
+/*SASS Variables*/
+
+/* Responsive Design */
+$breakpoints: (
+  small: 767px,
+  medium: 992px,
+  large: 1200px
+);
+
+/* Colors */
+$colors: (
+  primary: #03A9F4,
+  accent: #00C853,
+  secondary: #FF3D00,
+  foreground: #000000,
+  background: #ffffff
+);
+$color-interval: 10% !global; // Lighten or darken step amount
+
+/* Text */
+$text-dark-opacity: (
+  primary: 0.87,
+  secondary: 0.54,
+  disabled: 0.38,
+  divider: 0.12
+);
+$text-light-opacity: (
+  primary: 1,
+  secondary: 0.70,
+  disabled: 0.50,
+  divider: 0.12
+);
+
+/* z-index layers */
+$z-layers: (
+  bottomless-pit: -9999,
+  default: 1,
+  dropdown: 3000,
+  overlay: 4000,
+  modal: 4001
+);
