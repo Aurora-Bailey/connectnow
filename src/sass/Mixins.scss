@@ -1,15 +1,25 @@
 @import "Variables";
 
 /* Responsive Design */
-@mixin respond-to($breakpoint) {
+@mixin respond-over($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
-    @content;
+      @content;
+    }
+  }
+  @else {
+    @error "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Please make sure it is defined in `$breakpoints` map.";
   }
 }
-@else {
-  @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Please make sure it is defined in `$breakpoints` map.";
-}
+@mixin respond-under($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+  @else {
+    @error "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Please make sure it is defined in `$breakpoints` map.";
+  }
 }
 
 /* Colors */
@@ -18,7 +28,7 @@
     @return map-get($colors, $color-name);
   }
 
-  @warn "Unknown `#{$color-name}` in $colors.";
+  @error "Unknown `#{$color-name}` in $colors.";
 
   @return null;
 }
@@ -52,7 +62,7 @@
     @return map-get($z-layers, $layer-name);
   }
 
-  @warn "Unknown `#{$layer-name}` in $z-layers.";
+  @error "Unknown `#{$layer-name}` in $z-layers.";
 
   @return null;
 }

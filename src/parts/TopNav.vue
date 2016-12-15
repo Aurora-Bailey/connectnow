@@ -24,6 +24,11 @@
 
   export default {
     name: 'top-nav',
+    watch: {
+      '$route' () {
+        this.toggle = false
+      }
+    },
     data () {
       return {
         toggle: false
@@ -100,7 +105,7 @@
       background-position: center
       cursor: pointer
 
-    @media screen and (max-width: 750px)
+    +respond-under(w840)
       .nav-link
         height: 55px
         line-height: 55px
