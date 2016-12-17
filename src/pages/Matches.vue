@@ -102,12 +102,14 @@
 
         let apiurl = 'https://randomuser.me/api/?' + options.join('&')
 
-        console.log('getting ' + apiurl)
+        console.log('GET ' + apiurl)
 
         // request new data
         this.$http.get(apiurl).then((response) => {
           // remove old data
           while (this.matches.length > 0) this.matches.shift()
+
+          console.log(response)
 
           // success callback
           let i = 0
