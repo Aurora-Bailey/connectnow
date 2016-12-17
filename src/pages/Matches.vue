@@ -4,7 +4,7 @@
       <div class="section head">
         <div class="search">
           <i class="material-icons search-icon">search</i>
-          <input class="search-input" type="text" placeholder="Search">
+          <input class="search-input" type="text" placeholder="Search" @change="sendFilter">
         </div>
         <div class="toggle_filter_options" @click="filter_options=!filter_options">
           <i class="material-icons">settings</i>
@@ -14,39 +14,39 @@
       <div class="section options" :class="{open: filter_options}">
         <div class="category individual-tag">
           <div class="text">Individual Tag:</div>
-          <input type="text">
+          <input type="text" @change="sendFilter">
         </div>
 
         <div class="category sex">
           <div class="text">Sex:</div>
-          <select>
-            <option value="male" selected>Male</option>
+          <select v-model="options_sex" @change="sendFilter">
+            <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="yes">Yes</option>
+            <option value="both">Both</option>
           </select>
         </div>
 
         <div class="category proximity">
           <div class="text">Proximity:</div>
           <div class="multirange">
-            <input value="10" type="range">
-            <input type="range">
+            <input value="0" type="range" @change="sendFilter">
+            <input value="100"type="range" @change="sendFilter">
           </div>
         </div>
 
         <div class="category age">
           <div class="text">Age:</div>
           <div class="multirange">
-            <input value="10" type="range">
-            <input type="range">
+            <input value="0" type="range" @change="sendFilter">
+            <input value="100"type="range" @change="sendFilter">
           </div>
         </div>
 
         <div class="category experience">
           <div class="text">Experience:</div>
           <div class="multirange">
-            <input value="10" type="range">
-            <input type="range">
+            <input value="0" type="range" @change="sendFilter">
+            <input value="100"type="range" @change="sendFilter">
           </div>
         </div>
       </div>
@@ -55,17 +55,19 @@
       <div class="section multiple">
         <div class="title">Multiple Matches</div>
         <div v-for="match in matches" class="person">
-          <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div>
-          <div class="age">Age: {{match.age}}</div>
-          <div class="location">Location: {{match.location}}</div>
+          <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
+          <div class="info name"><span class="v-center">{{match.name}}</span></div>
+          <div class="info age"><span class="v-center">{{match.age}}</span></div>
+          <div class="info location"><span class="v-center">{{match.location}}</span></div>
         </div>
       </div>
       <div class="section single">
         <div class="title">Specific Tag</div>
         <div v-for="match in matches" class="person">
-          <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div>
-          <div class="age">Age: {{match.age}}</div>
-          <div class="location">Location: {{match.location}}</div>
+          <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
+          <div class="info name"><span class="v-center">{{match.name}}</span></div>
+          <div class="info age"><span class="v-center">{{match.age}}</span></div>
+          <div class="info location"><span class="v-center">{{match.location}}</span></div>
         </div>
       </div>
 
@@ -82,25 +84,45 @@
       return {
         matches: [],
         preview: {},
-        filter_options: false
+        filter_options: false,
+        options_search: '',
+        options_tag: '',
+        options_sex: 'both',
+        options_proximity: '',
+        options_age: '',
+        options_experiance: ''
+      }
+    },
+    methods: {
+      sendFilter: function (e) {
+        let options = []
+        options.push('results=10')
+        options.push('inc=picture,dob,location,name')
+        options.push('gender=' + this.options_sex)
+
+        let apiurl = 'https://randomuser.me/api/?' + options.join('&')
+
+        console.log('getting ' + apiurl)
+
+        // request new data
+        this.$http.get(apiurl).then((response) => {
+          // remove old data
+          while (this.matches.length > 0) this.matches.shift()
+
+          // success callback
+          let i = 0
+          while (typeof response.body.results[i] !== 'undefined') {
+            let r = response.body.results[i]
+            this.matches.push({name: r.name.first, picture: r.picture.medium, age: 2016 - parseInt(r.dob.slice(0, 4)), location: r.location.city + ', ' + r.location.state})
+            i++
+          }
+        }, (response) => {
+          // error callback
+        })
       }
     },
     mounted: function () {
-      // remove old data
-      while (this.matches.length > 0) this.matches.shift()
-
-      // request new data
-      this.$http.get('https://randomuser.me/api/?results=10&inc=picture,dob,location').then((response) => {
-        // success callback
-        let i = 0
-        while (typeof response.body.results[i] !== 'undefined') {
-          let r = response.body.results[i]
-          this.matches.push({picture: r.picture.medium, age: 2016 - parseInt(r.dob.slice(0, 4)), location: r.location.city + ', ' + r.location.state})
-          i++
-        }
-      }, (response) => {
-        // error callback
-      })
+      this.sendFilter()
     }
   }
 </script>
@@ -171,17 +193,54 @@
         font-weight: bold
 
     .person
-      white-space: nowrap
+      position: relative
       border-bottom: 1px solid color-text(color(background), divider)
+      color: color-text(color(background), secondary)
+      font-size: 18px
+      font-weight: bold
+      cursor: pointer
+      +contain()
 
-      .age, .location, .picture
-        display: inline-block
-        vertical-align: text-top
-        line-height: 75px
-        margin: 10px
+      &:hover
+        color: color-text(color(background), primary)
+
+      .info
         text-transform: capitalize
+        position: relative
+        padding: 10px
+        text-align: center
+        // outline: 1px solid red
+
+        &.image
+          +span(4,4)
+        &.name
+          +span(2,4)
+        &.age
+          +span(2,4)
+        &.location
+          +span(4,4)
+
+        +respond-over(w480)
+          min-height: 95px
+          text-align: left
+
+          &.image
+            +span(3,12)
+          &.name
+            +span(3,12)
+          &.age
+            +span(2,12)
+          &.location
+            +span(4,12)
+
+          .v-center
+            position: absolute
+            top: 50%
+            transform: translate(0, -50%)
 
       .picture
+        vertical-align: middle
+        display: inline-block
         width: 75px
         height: 75px
         border-radius: 75px
