@@ -7,7 +7,9 @@ let GlobalSettings = {
   server: {
     address: window.location.hostname === 'localhost' ? 'localhost' : 'ws.example.com',
     devAddress: window.location.hostname === 'localhost',
-    devPort: '7777'
+    devPort: '7777',
+    protocol: 'http://',
+    api: 'http://localhost/api/'
   }
 }
 
