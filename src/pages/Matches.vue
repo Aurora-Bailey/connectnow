@@ -52,22 +52,27 @@
       </div>
     </div>
     <div class="card matches">
+
       <div class="section multiple">
         <div class="title">Multiple Matches</div>
         <div v-for="match in matches" class="person">
-          <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
-          <div class="info name"><span class="v-center">{{match.name}}</span></div>
-          <div class="info age"><span class="v-center">{{match.age}}</span></div>
-          <div class="info location"><span class="v-center">{{match.location}}</span></div>
+          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'confirm', id: match.name }}">
+            <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
+            <div class="info name"><span class="v-center">{{match.name}}</span></div>
+            <div class="info age"><span class="v-center">{{match.age}}</span></div>
+            <div class="info location"><span class="v-center">{{match.location}}</span></div>
+          </router-link>
         </div>
       </div>
       <div class="section single">
         <div class="title">Specific Tag</div>
         <div v-for="match in matches" class="person">
-          <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
-          <div class="info name"><span class="v-center">{{match.name}}</span></div>
-          <div class="info age"><span class="v-center">{{match.age}}</span></div>
-          <div class="info location"><span class="v-center">{{match.location}}</span></div>
+          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'confirm', id: match.name }}">
+            <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
+            <div class="info name"><span class="v-center">{{match.name}}</span></div>
+            <div class="info age"><span class="v-center">{{match.age}}</span></div>
+            <div class="info location"><span class="v-center">{{match.location}}</span></div>
+          </router-link>
         </div>
       </div>
 
@@ -202,6 +207,11 @@
       font-weight: bold
       cursor: pointer
       +contain()
+
+      .person_link
+        color: inherit
+        text-decoration: none
+        display: block
 
       &:hover
         color: color-text(color(background), primary)

@@ -8,6 +8,10 @@
     <transition name="slide-fade">
       <router-view></router-view>
     </transition>
+
+    <transition name="drop-fade">
+      <router-view class="router-popup" name="popup"></router-view>
+    </transition>
   </div>
 </template>
 

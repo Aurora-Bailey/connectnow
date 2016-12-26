@@ -13,7 +13,6 @@
         <router-link class="nav-link connections" to="/connections">connections</router-link>
         <router-link class="nav-link groups" to="/groups">groups</router-link>
         <router-link class="nav-link profile" to="/profile">profile</router-link>
-        <router-link class="nav-link logout" to="/logout">log out</router-link>
       </div>
     </div>
   </div>
@@ -51,7 +50,7 @@
 
     .top-nav-fixed
       position: fixed
-      z-index: 1000
+      z-index: z(floating)
       top: 0
       left: 0
       right: 0

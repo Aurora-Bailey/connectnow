@@ -39,7 +39,9 @@ $text-light-opacity: (
 $z-layers: (
   bottomless-pit: -9999,
   default: 1,
+  floating: 1000,
   dropdown: 3000,
   overlay: 4000,
-  modal: 4001
+  popup: 4001,
+  alert: 5000
 );

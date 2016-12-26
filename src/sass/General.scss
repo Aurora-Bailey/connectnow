@@ -72,14 +72,22 @@ input[type='text'] {
   transition: all 0.2s ease;
   transition-delay: 0.2s;
 }
-
 .slide-fade-leave-active {
   transition: all 0.2s ease;
 }
-
 .slide-fade-enter, .slide-fade-leave-active {
   margin-top: 30px;
   opacity: 0;
+}
+
+.drop-fade-enter-active {
+  transition: all 0.2s linear;
+}
+.drop-fade-leave-active {
+  transition: all 0.2s linear;
+}
+.drop-fade-enter, .drop-fade-leave-active {
+  transform: scale(1.1);
 }
 
 /* Global Classes */
