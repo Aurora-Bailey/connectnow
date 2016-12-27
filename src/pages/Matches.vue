@@ -4,7 +4,7 @@
       <div class="section head">
         <div class="search">
           <i class="material-icons search-icon">search</i>
-          <input class="search-input" type="text" placeholder="Search" @change="loadMatches">
+          <input v-model="options_search" class="search-input" type="text" placeholder="Search" @change="loadMatches">
         </div>
         <div class="toggle_filter_options" @click="filter_options=!filter_options">
           <i class="material-icons">settings</i>
@@ -14,7 +14,7 @@
       <div class="section options" :class="{open: filter_options}">
         <div class="category individual-tag">
           <div class="text">Individual Tag:</div>
-          <input type="text" @change="loadMatches">
+          <input v-model="options_tags" type="text" @change="loadMatches">
         </div>
 
         <div class="category sex">
@@ -29,24 +29,24 @@
         <div class="category proximity">
           <div class="text">Proximity:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="loadMatches">
-            <input value="100"type="range" @change="loadMatches">
+            <input v-model="options_proximity_low" type="range" @change="loadMatches">
+            <input v-model="options_proximity_high" type="range" @change="loadMatches">
           </div>
         </div>
 
         <div class="category age">
           <div class="text">Age:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="loadMatches">
-            <input value="100"type="range" @change="loadMatches">
+            <input v-model="options_age_low" type="range" @change="loadMatches">
+            <input v-model="options_age_high" type="range" @change="loadMatches">
           </div>
         </div>
 
         <div class="category experience">
           <div class="text">Experience:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="loadMatches">
-            <input value="100"type="range" @change="loadMatches">
+            <input v-model="options_experiance_low" type="range" @change="loadMatches">
+            <input v-model="options_experiance_high" type="range" @change="loadMatches">
           </div>
         </div>
       </div>
@@ -88,24 +88,32 @@
     data () {
       return {
         matches: [],
-        preview: {},
         filter_options: false,
         options_search: '',
-        options_tag: '',
+        options_tags: '',
         options_sex: 'both',
-        options_proximity: '',
-        options_age: '',
-        options_experiance: ''
+        options_proximity_low: 0,
+        options_proximity_high: 100,
+        options_age_low: 0,
+        options_age_high: 100,
+        options_experiance_low: 0,
+        options_experiance_high: 100
       }
     },
     methods: {
       loadMatches: function (e) {
         let options = []
-        // options.push('results=10')
+        options.push('search=' + this.options_search)
+        options.push('tags=' + this.options_tags)
+        options.push('sex=' + this.options_sex)
+        options.push('proximity=' + this.options_proximity_low + ',' + this.options_proximity_high)
+        options.push('age=' + this.options_age_low + ',' + this.options_age_high)
+        options.push('experiance=' + this.options_experiance_low + ',' + this.options_experiance_high)
         // options.push('inc=picture,dob,location,name')
         // options.push('gender=' + this.options_sex)
 
         let apiurl = this.$root.$data.server.origin + '/api/matches.php?' + options.join('&')
+        console.log(apiurl)
 
         // request new data
         this.$http.get(apiurl).then((response) => {
