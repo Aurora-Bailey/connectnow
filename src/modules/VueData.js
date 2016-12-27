@@ -1,9 +1,18 @@
-/* Data controlled by Vue.js used as a global app state. Can be accessed from anywhere, changes to Data.js will update in Vue.js real time.  */
-import GlobalSettings from './GlobalSettings'
 let Data = {
   version: {
-    compatible: GlobalSettings.version.compatible,
-    micro: GlobalSettings.version.micro
+    compatible: 'GSE4H65',
+    micro: 'v001'
+  },
+  server: {
+    // localhost || www.example.com
+    host: window.location.hostname,
+
+    // http: || https:
+    protocol: window.location.protocol,
+
+    // Custom origin link for localhost to cut off the port number
+    // http://localhost || http://www.example.com
+    origin: window.location.hostname === 'localhost' ? 'http://localhost' : window.location.origin
   },
   user: {
     id: 0,

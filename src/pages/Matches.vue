@@ -4,7 +4,7 @@
       <div class="section head">
         <div class="search">
           <i class="material-icons search-icon">search</i>
-          <input class="search-input" type="text" placeholder="Search" @change="sendFilter">
+          <input class="search-input" type="text" placeholder="Search" @change="loadMatches">
         </div>
         <div class="toggle_filter_options" @click="filter_options=!filter_options">
           <i class="material-icons">settings</i>
@@ -14,12 +14,12 @@
       <div class="section options" :class="{open: filter_options}">
         <div class="category individual-tag">
           <div class="text">Individual Tag:</div>
-          <input type="text" @change="sendFilter">
+          <input type="text" @change="loadMatches">
         </div>
 
         <div class="category sex">
           <div class="text">Sex:</div>
-          <select v-model="options_sex" @change="sendFilter">
+          <select v-model="options_sex" @change="loadMatches">
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="both">Both</option>
@@ -29,24 +29,24 @@
         <div class="category proximity">
           <div class="text">Proximity:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="sendFilter">
-            <input value="100"type="range" @change="sendFilter">
+            <input value="0" type="range" @change="loadMatches">
+            <input value="100"type="range" @change="loadMatches">
           </div>
         </div>
 
         <div class="category age">
           <div class="text">Age:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="sendFilter">
-            <input value="100"type="range" @change="sendFilter">
+            <input value="0" type="range" @change="loadMatches">
+            <input value="100"type="range" @change="loadMatches">
           </div>
         </div>
 
         <div class="category experience">
           <div class="text">Experience:</div>
           <div class="multirange">
-            <input value="0" type="range" @change="sendFilter">
-            <input value="100"type="range" @change="sendFilter">
+            <input value="0" type="range" @change="loadMatches">
+            <input value="100"type="range" @change="loadMatches">
           </div>
         </div>
       </div>
@@ -99,24 +99,20 @@
       }
     },
     methods: {
-      sendFilter: function (e) {
+      loadMatches: function (e) {
         let options = []
-        options.push('results=10')
-        options.push('inc=picture,dob,location,name')
-        options.push('gender=' + this.options_sex)
+        // options.push('results=10')
+        // options.push('inc=picture,dob,location,name')
+        // options.push('gender=' + this.options_sex)
 
-        let apiurl = 'https://randomuser.me/api/?' + options.join('&')
-
-        console.log('GET ' + apiurl)
+        let apiurl = this.$root.$data.server.origin + '/api/matches.php?' + options.join('&')
 
         // request new data
         this.$http.get(apiurl).then((response) => {
-          // remove old data
+          // Remove old data
           while (this.matches.length > 0) this.matches.shift()
 
-          console.log(response)
-
-          // success callback
+          // Success callback
           let i = 0
           while (typeof response.body.results[i] !== 'undefined') {
             let r = response.body.results[i]
@@ -124,12 +120,12 @@
             i++
           }
         }, (response) => {
-          // error callback
+          // Error callback
         })
       }
     },
     mounted: function () {
-      this.sendFilter()
+      this.loadMatches()
     }
   }
 </script>
