@@ -48,7 +48,10 @@
     right: 0
     left: 0
     top: 0
-    box-shadow: 0 1px 20px rgba(0,0,0,0.5);
+    border: 3px solid color-text(color(background), disabled)
+    border-radius: 10px
+    box-shadow: 0 0 15px rgba(0,0,0,.18);
+    padding: 15px
 
   .asdf
     opacity: 1
