@@ -9,14 +9,17 @@ import NotFound from './pages/NotFound'
 // Popups
 import Popup from './popups/Popup'
 
+// Parts
+import TopNav from './parts/TopNav'
+
 // Router
 export default [
-  { name: 'home', path: '/', component: Home },
-  { name: 'matches', path: '/matches', component: Matches },
-  { name: 'matches_popup', path: '/matches/:type/:id', components: { default: Matches, popup: Popup } },
+  { name: 'home', path: '/', components: { default: Home, nav: TopNav } },
+  { name: 'matches', path: '/matches', components: { default: Matches, nav: TopNav } },
+  { name: 'matches_popup', path: '/matches/:type/:id', components: { default: Matches, nav: TopNav, popup: Popup } },
 
-  { name: 'connections', path: '/connections', component: Connections },
-  { name: 'groups', path: '/groups', component: Groups },
-  { name: 'profile', path: '/profile', component: Profile },
-  { name: '404', path: '*', component: NotFound }
+  { name: 'connections', path: '/connections', components: { default: Connections, nav: TopNav } },
+  { name: 'groups', path: '/groups', components: { default: Groups, nav: TopNav } },
+  { name: 'profile', path: '/profile', components: { default: Profile, nav: TopNav } },
+  { name: '404', path: '*', components: { default: NotFound, nav: TopNav } }
 ]

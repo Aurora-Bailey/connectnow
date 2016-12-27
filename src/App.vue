@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <top-nav></top-nav>
-
     <!-- route outlet -->
     <!-- component matched by the route will render here -->
+
+    <transition name="slide-fade">
+      <router-view class="router-nav" name="nav"></router-view>
+    </transition>
 
     <transition name="slide-fade">
       <router-view></router-view>
@@ -19,14 +21,8 @@
   /* Core */
   import VueRouter from 'vue-router'
 
-  /* Components */
-  import TopNav from './parts/TopNav'
-
   export default {
-    name: 'app',
-    components: {
-      TopNav
-    }
+    name: 'app'
   }
 </script>
 
