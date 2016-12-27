@@ -27,13 +27,6 @@
       if (!this.$root.$data.user.logged_in) {
         this.$router.push({ path: '/login' })
       }
-    },
-    watch: {
-      '$route': function () {
-        if (!this.$root.$data.user.logged_in) {
-          this.$router.push({ path: '/login' })
-        }
-      }
     }
   }
 </script>
