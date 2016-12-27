@@ -2,7 +2,7 @@
   <div class="popup" @click.prevent.stop="close">
 
     <div class="modal" @click.prevent.stop="">
-      Popup Content!
+      <slot>Popup Content!</slot>
     </div>
   </div>
 </template>
@@ -39,15 +39,12 @@
     z-index: z(overlay)
 
   .modal
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     background-color: white
-    width: 500px
-    height: 500px
-    margin: auto
-    position: fixed
-    bottom: 0
-    right: 0
-    left: 0
-    top: 0
     border: 3px solid color-text(color(background), disabled)
     border-radius: 10px
     box-shadow: 0 0 15px rgba(0,0,0,.18);

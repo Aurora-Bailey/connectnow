@@ -56,7 +56,7 @@
       <div class="section multiple">
         <div class="title">Multiple Matches</div>
         <div v-for="match in matches" class="person">
-          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'confirm', id: match.name }}">
+          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'invite', id: 12345 }}">
             <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
             <div class="info name"><span class="v-center">{{match.name}}</span></div>
             <div class="info age"><span class="v-center">{{match.age}}</span></div>
@@ -67,7 +67,7 @@
       <div class="section single">
         <div class="title">Specific Tag</div>
         <div v-for="match in matches" class="person">
-          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'confirm', id: match.name }}">
+          <router-link class="person_link" :to="{ name: 'matches_popup', params: { type: 'invite', id: 12345 }}">
             <div class="info image"> <div class="picture" :style="{backgroundImage: 'url(' + match.picture + ')'}"></div></div>
             <div class="info name"><span class="v-center">{{match.name}}</span></div>
             <div class="info age"><span class="v-center">{{match.age}}</span></div>
@@ -109,8 +109,6 @@
         options.push('proximity=' + this.options_proximity_low + ',' + this.options_proximity_high)
         options.push('age=' + this.options_age_low + ',' + this.options_age_high)
         options.push('experiance=' + this.options_experiance_low + ',' + this.options_experiance_high)
-        // options.push('inc=picture,dob,location,name')
-        // options.push('gender=' + this.options_sex)
 
         let apiurl = this.$root.$data.server.origin + '/api/matches.php?' + options.join('&')
         console.log(apiurl)

@@ -7,7 +7,7 @@ import Profile from './pages/Profile'
 import NotFound from './pages/NotFound'
 
 // Popups
-import Popup from './popups/Popup'
+import Invite from './popups/Invite'
 
 // Parts
 import TopNav from './parts/TopNav'
@@ -16,7 +16,7 @@ import TopNav from './parts/TopNav'
 export default [
   { name: 'home', path: '/', components: { default: Home, nav: TopNav } },
   { name: 'matches', path: '/matches', components: { default: Matches, nav: TopNav } },
-  { name: 'matches_popup', path: '/matches/:type/:id', components: { default: Matches, nav: TopNav, popup: Popup } },
+  { name: 'matches_popup', path: '/matches/:type/:id', components: { default: Matches, nav: TopNav, popup: Invite } },
 
   { name: 'connections', path: '/connections', components: { default: Connections, nav: TopNav } },
   { name: 'groups', path: '/groups', components: { default: Groups, nav: TopNav } },
