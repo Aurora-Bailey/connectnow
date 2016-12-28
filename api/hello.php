@@ -7,7 +7,8 @@
 // hello.php?id=654&firstname=qqqqqqq&lastname=asdf&user[zipcode]=123456&user[location]=qwerty
 
 // Allow requests from any domain
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://localhost:8080');
+header('Access-Control-Allow-Credentials: true');
 
 // Change the content type from html to json
 header('Content-type: application/json');

@@ -5,7 +5,8 @@
 /* Optional parameters */
 
 
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://localhost:8080');
+header('Access-Control-Allow-Credentials: true');
 header('Content-type: application/json');
 exit('{
     "results": [{

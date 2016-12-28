@@ -106,12 +106,12 @@
         let formData = new window.FormData(form)
 
         // request new data
-        this.$http.post(apiurl, formData).then((response) => {
-          let results = response.body.results
+        this.$http.post(apiurl, formData, {credentials: true}).then((response) => {
+          let data = response.body
 
-          if (results.length === 1) {
-            this.$set(this.$root.$data, 'user', results[0])
-            this.$router.push({ path: '/matches' }) // asdf
+          this.$root.$data.status.login = data.valid
+          if (data.valid) {
+            this.$router.push({ path: '/matches' })
           }
         }, (response) => { //
           // Error callback

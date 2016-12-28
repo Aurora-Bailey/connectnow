@@ -14,9 +14,11 @@ let Data = {
     // http://localhost || http://www.example.com
     origin: window.location.hostname === 'localhost' ? 'http://localhost' : window.location.origin
   },
+  status: {
+    login: true
+  },
   user: {
-    name: '',
-    logged_in: false
+    name: ''
   }
 }
 

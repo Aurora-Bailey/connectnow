@@ -12,7 +12,8 @@
 /* Example */
 // matches.php?search=x&tags=x&sex=x&proximity=high,low&age=high,low&experiance=high,low
 
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://localhost:8080');
+header('Access-Control-Allow-Credentials: true');
 header('Content-type: application/json');
 exit('{
     "results": [{
