@@ -23,27 +23,9 @@
 
   export default {
     name: 'app',
-    created: function () {
-      let apiurl = this.$root.$data.server.origin + '/api/authenticate.php'
-      console.log(apiurl)
-
-      // request new data
-      this.$http.get(apiurl, {credentials: true}).then((response) => {
-        let data = response.body
-
-        this.$root.$data.status.login = data.valid
-        if (!data.valid) {
-          this.$router.replace({ path: '/login' })
-        }
-      }, (response) => { //
-        // Error callback
-      })
-    },
-    watch: {
-      '$route': function () {
-        if (!this.$root.$data.status.login) {
-          this.$router.replace({ path: '/login' }) // asdf
-        }
+    beforeCreate: function () {
+      if (window.localStorage && !window.localStorage.cn_auth) {
+        this.$router.replace({path: '/login'})
       }
     }
   }

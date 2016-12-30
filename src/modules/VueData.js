@@ -12,10 +12,10 @@ let Data = {
 
     // Custom origin link for localhost to cut off the port number
     // http://localhost || http://www.example.com
-    origin: window.location.hostname === 'localhost' ? 'http://localhost' : window.location.origin
-  },
-  status: {
-    login: true
+    origin: window.location.hostname === 'localhost' ? 'http://localhost' : window.location.origin,
+
+    // /xyz
+    path: window.location.pathname
   },
   user: {
     name: ''

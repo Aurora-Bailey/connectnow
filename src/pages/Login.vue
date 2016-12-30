@@ -109,9 +109,9 @@
         this.$http.post(apiurl, formData, {credentials: true}).then((response) => {
           let data = response.body
 
-          this.$root.$data.status.login = data.valid
           if (data.valid) {
-            this.$router.push({ path: '/matches' })
+            window.localStorage.cn_auth = data.token
+            this.$router.replace({ path: this.$root.$data.server.path })
           }
         }, (response) => { //
           // Error callback
