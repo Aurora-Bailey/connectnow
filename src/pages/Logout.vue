@@ -10,17 +10,14 @@
   export default {
     name: 'logout',
     created: function () {
-      let apiurl = this.$root.$data.server.origin + '/api/logout.php'
-      console.log(apiurl)
-      this.$http.get(apiurl).then((response) => {
-        let data = response.body
+      this.$apiget('logout', [], (data) => {
+        // Console log any errors
+        if (data.error) { console.log(data); return false }
 
         if (data.valid) {
           delete window.localStorage.cn_auth
           this.$router.replace({ path: '/login' })
         }
-      }, (response) => { //
-        // Error callback
       })
     }
   }

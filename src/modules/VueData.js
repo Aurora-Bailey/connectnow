@@ -10,12 +10,17 @@ let Data = {
     // http: || https:
     protocol: window.location.protocol,
 
-    // Custom origin link for localhost to cut off the port number
     // http://localhost || http://www.example.com
-    origin: window.location.hostname === 'localhost' ? 'http://localhost' : window.location.origin,
+    origin: window.location.origin,
 
-    // /xyz
-    path: window.location.pathname
+    // /xyz || / || /asdf/werwer
+    path: window.location.pathname,
+
+    // /static/api/ || /api/
+    api: window.location.origin + (window.location.hostname === 'localhost' ? '/static/api/' : '/api/'),
+
+    // .txt || .php || ''
+    apiext: (window.location.hostname === 'localhost' ? '.txt' : '.php')
   },
   user: {
     name: ''

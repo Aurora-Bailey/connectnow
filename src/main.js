@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
+import JsonApi from './plugins/JsonApi'
 import App from './App'
 import VueData from './modules/VueData'
 import Routes from './Routes'
@@ -14,6 +15,7 @@ import 'bootstrap' */
 // The Vue thing
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(JsonApi)
 
 const router = new VueRouter({
   // History mode makes links prettier, but requires dedicated hosting. (or in s3 set 404 to index.html)

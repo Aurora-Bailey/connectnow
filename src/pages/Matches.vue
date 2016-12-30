@@ -102,31 +102,27 @@
     },
     methods: {
       loadMatches: function (e) {
-        let options = []
-        options.push('search=' + this.options_search)
-        options.push('tags=' + this.options_tags)
-        options.push('sex=' + this.options_sex)
-        options.push('proximity=' + this.options_proximity_low + ',' + this.options_proximity_high)
-        options.push('age=' + this.options_age_low + ',' + this.options_age_high)
-        options.push('experiance=' + this.options_experiance_low + ',' + this.options_experiance_high)
+        // Set Query
+        let query = []
+        query.push('search=' + this.options_search)
+        query.push('tags=' + this.options_tags)
+        query.push('sex=' + this.options_sex)
+        query.push('proximity=' + this.options_proximity_low + ',' + this.options_proximity_high)
+        query.push('age=' + this.options_age_low + ',' + this.options_age_high)
+        query.push('experiance=' + this.options_experiance_low + ',' + this.options_experiance_high)
 
-        let apiurl = this.$root.$data.server.origin + '/api/matches.php?' + options.join('&')
-        console.log(apiurl)
+        this.$apiget('matches', query, (data) => {
+          // Console log any errors
+          if (data.error) { console.log(data); return false }
 
-        // request new data
-        this.$http.get(apiurl).then((response) => {
           // Remove old data
           while (this.matches.length > 0) this.matches.shift()
 
           // Success callback
-          let i = 0
-          while (typeof response.body.results[i] !== 'undefined') {
-            let r = response.body.results[i]
+          for (let i = 0; typeof data.results[i] !== 'undefined'; i++) {
+            let r = data.results[i]
             this.matches.push({name: r.name.first, picture: r.picture.medium, age: 2016 - parseInt(r.dob.slice(0, 4)), location: r.location.city + ', ' + r.location.state})
-            i++
           }
-        }, (response) => {
-          // Error callback
         })
       }
     },

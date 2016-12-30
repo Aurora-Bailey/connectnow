@@ -93,23 +93,19 @@
     },
     methods: {
       sendForm: function (e) {
-        let apiurl = this.$root.$data.server.origin + '/api/signup.php'
-        console.log(apiurl)
+        // Set data
         let form = e.target
         let formData = new window.FormData(form)
 
-        // request new data
-        this.$http.post(apiurl, formData, {credentials: true}).then((response) => {
-          let data = response.body
+        this.$apipost('signup', formData, (data) => {
+          // Console log any errors
+          if (data.error) { console.log(data); return false }
 
           if (data.valid) {
             window.localStorage.cn_auth = data.token
             this.$router.replace({ path: this.$root.$data.server.path === '/login' ? '/' : this.$root.$data.server.path })
           }
-        }, (response) => { //
-          // Error callback
         })
-        return false
       }
     }
   }

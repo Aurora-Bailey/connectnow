@@ -1,21 +1,4 @@
-<?php
-/* Required parameters */
-
-/* Optional parameters */
-// search=string
-// tags=string
-// sex=string
-// proximity=high,low
-// age=high,low
-// experiance=high,low
-
-/* Example */
-// matches.php?search=x&tags=x&sex=x&proximity=high,low&age=high,low&experiance=high,low
-
-header('Access-Control-Allow-Origin: http://localhost:8080');
-header('Access-Control-Allow-Credentials: true');
-header('Content-type: application/json');
-exit('{
+{
     "results": [{
         "name": {
             "title": "mr",
@@ -203,4 +186,4 @@ exit('{
         "page": 1,
         "version": "1.1"
     }
-}');
+}

@@ -35,21 +35,15 @@
     },
     methods: {
       loadMatches: function (e) {
-        let options = []
-        options.push('id=' + this.$route.params.id)
+        // Set Query
+        let query = []
+        query.push('id=' + this.$route.params.id)
 
-        let apiurl = this.$root.$data.server.origin + '/api/invite.php?' + options.join('&')
-        console.log(apiurl)
+        this.$apiget('invite', query, (data) => {
+          // Console log any errors
+          if (data.error) { console.log(data); return false }
 
-        // request new data
-        this.$http.get(apiurl).then((response) => {
-          let results = response.body.results
-
-          if (results.length === 1) {
-            this.$set(this, 'results', results[0])
-          }
-        }, (response) => {
-          // Error callback
+          this.$set(this, 'results', data.results[0])
         })
       }
     },

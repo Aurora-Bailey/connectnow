@@ -1,14 +1,4 @@
-<?php
-/* Required parameters */
-// id=int
-
-/* Optional parameters */
-
-
-header('Access-Control-Allow-Origin: http://localhost:8080');
-header('Access-Control-Allow-Credentials: true');
-header('Content-type: application/json');
-exit('{
+{
     "results": [{
         "name": "arthur",
         "location": "lille, nord",
@@ -23,4 +13,4 @@ exit('{
         "page": 1,
         "version": "1.1"
     }
-}');
+}
