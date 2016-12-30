@@ -1,78 +1,83 @@
 <template>
   <div class="login">
-    <div class="form">
-      <ul class="tab-group">
-        <li class="tab" :class="{active: signup===true}"><a href="#signup" @click.prevent="signup=true">Sign Up</a></li>
-        <li class="tab" :class="{active: signup===false}"><a href="#login" @click.prevent="signup=false">Log In</a></li>
-      </ul>
 
-      <div class="tab-content">
-        <div v-show="signup">
-          <h1>Sign Up for Free</h1>
-          <form @submit.prevent="sendForm">
+    <div class="description">
+      <div class="section-padding">
+        <h2 class="title">Find like-minded people</h2>
+        <p class="article">
+          Want to connect with people who share your passions and interests in life? We do, too. That's why we created Connect Now — A platform for connecting to people who like what you like and want to meet, hang out with, or just talk to someone like you.
+        </p>
+        <h2 class="title">Want to learn from the greats?</h2>
+        <p class="article">
+          Connect to pros and beginners alike, share your knowledge, and learn from other people by sharing ideas, images, and files through our platform. Tell us your level of skill in a particular area so we can help you connect to the right individuals for whatever you're trying to do.
+        </p>
+    </div>
+    </div>
+    <div class="signup">
+      <div class="section-padding">
+        <form @submit.prevent="sendForm">
+          <div class="contain-form">
+            <div class="field"><h1 class="title">Sign Up</h1></div>
+            <div class="field padded"><h3 class="title-secondary">It’s free and always will be.</h3></div>
+            <div class="field double padded"><input class="input" placeholder="First Name" name="firstname" type="text"/></div>
+            <div class="field double padded"><input class="input" placeholder="Last Name" name="lastname" type="text"/></div>
+            <div class="field"><input class="input" placeholder="Username" name="username" type="text"/></div>
+            <div class="field"><input class="input" placeholder="Email" name="email" type="email"/></div>
+            <div class="field"><input class="input" placeholder="New Password" name="password" type="password"/></div>
+            <div class="field padded"><input class="input" placeholder="Zip Code" name="zipcode" type="text"/></div>
 
-            <div class="top-row">
-              <div class="field-wrap">
-                <label :class="{active: f.a !== ''}">
-                  First Name<span class="req">*</span>
-                </label>
-                <input v-model="f.a" name="first" type="text" required autocomplete="off" />
-              </div>
-
-              <div class="field-wrap">
-                <label :class="{active: f.b !== ''}">
-                  Last Name<span class="req">*</span>
-                </label>
-                <input v-model="f.b" name="last" type="text" required autocomplete="off"/>
-              </div>
+            <div class="field padded">
+              Birthday:<br>
+              <select name="birthday_month" title="Month">
+                 <option value="0" selected="1">Month</option>
+                 <option value="1">Jan</option>
+                 <option value="2">Feb</option>
+                 <option value="3">Mar</option>
+                 <option value="4">Apr</option>
+                 <option value="5">May</option>
+                 <option value="6">Jun</option>
+                 <option value="7">Jul</option>
+                 <option value="8">Aug</option>
+                 <option value="9">Sep</option>
+                 <option value="10">Oct</option>
+                 <option value="11">Nov</option>
+                 <option value="12">Dec</option>
+              </select>
+              <select name="birthday_day" title="Day">
+                <option value="0" selected>Day</option>
+                <option :value="index + 1" v-for="(a, index) in new Array(32)">{{index + 1}}</option>
+              </select>
+              <select name="birthday_year"title="Year">
+                <option value="0" selected>Year</option>
+                <option :value="2016 - index" v-for="(a, index) in new Array(100)">{{2016 - index}}</option>
+              </select>
             </div>
 
-            <div class="field-wrap">
-              <label :class="{active: f.c !== ''}">
-                Email Address<span class="req">*</span>
-              </label>
-              <input v-model="f.c" name="email" type="email" required autocomplete="off"/>
+            <div class="field padded">
+              <span class="radio-option">
+                <input type="radio" name="sex" value="1">
+                <label>Female</label>
+              </span>
+              <span class="radio-option">
+                <input type="radio" name="sex" value="2">
+              <label>Male</label>
+              </span>
             </div>
 
-            <div class="field-wrap">
-              <label :class="{active: f.d !== ''}">
-                Set A Password<span class="req">*</span>
-              </label>
-              <input v-model="f.d" name="password" type="password" required autocomplete="off"/>
+
+
+            <div class="field">
+              <p class="terms-of-service">
+                By clicking Create Account, you agree to our Terms and that you have read our Data Policy, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+              </p>
             </div>
+            <div class="field"><input class="submit" type="submit" value="Create Account"/></div>
+          </div>
+        </form>
 
-            <button type="submit" class="button button-block">Get Started</button>
+      </div>
 
-          </form>
-        </div>
-
-        <div v-show="!signup">
-          <h1>Welcome Back!</h1>
-
-          <form @submit.prevent="sendForm">
-
-            <div class="field-wrap">
-              <label :class="{active: f.e !== ''}">
-                Email Address<span class="req">*</span>
-              </label>
-              <input v-model="f.e" name="email" type="email" required autocomplete="off"/>
-            </div>
-
-            <div class="field-wrap">
-              <label :class="{active: f.f !== ''}">
-                Password<span class="req">*</span>
-              </label>
-              <input v-model="f.f" name="password" type="password" required autocomplete="off"/>
-            </div>
-
-            <button type="submit" class="button button-block">Log In</button>
-
-          </form>
-        </div>
-
-      </div><!-- tab-content -->
-
-    </div> <!-- /form -->
+    </div>
   </div>
 </template>
 
@@ -83,24 +88,12 @@
     name: 'login',
     data () {
       return {
-        signup: true, // toggle login and signup
-        f: {
-          a: '',
-          b: '',
-          c: '',
-          d: '',
-          e: '',
-          f: '',
-          g: '',
-          h: '',
-          i: '',
-          j: ''
-        }
+        signup: true // toggle login and signup
       }
     },
     methods: {
       sendForm: function (e) {
-        let apiurl = this.$root.$data.server.origin + '/api/login.php'
+        let apiurl = this.$root.$data.server.origin + '/api/signup.php'
         console.log(apiurl)
         let form = e.target
         let formData = new window.FormData(form)
@@ -123,182 +116,81 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="sass" scoped>
   /* SASS imports */
-  @import "../sass/Variables";
-  @import "../sass/Mixins";
+  @import "../sass/Variables"
+  @import "../sass/Mixins"
 
-  $form-bg: #13232f;
-  $white: #ffffff;
+  h1
+    font-size: 2em
+    color: color-text(color(background), secondary)
 
-  $main: #1ab188;
-  $main-light: lighten($main,5%);
-  $main-dark: darken($main,5%);
+  h2
+    font-size: 1.3em
+    color: color-text(color(background), secondary)
 
-  $gray-light: #a0b3b0;
-  $gray: #ddd;
+  h3
+    font-size: 1.1em
+    font-weight: normal
+    color: color-text(color(background), secondary)
 
-  $thin: 300;
-  $normal: 400;
-  $bold: 600;
-  $br: 4px;
+  .login
+    +contain()
 
-  a {
-    text-decoration:none;
-    color:$main;
-    transition:.5s ease;
-    &:hover {
-      color:$main-dark;
-    }
-  }
+  .description, .signup
+    +span(6, 12)
 
-  .form {
-    background:rgba($form-bg,.9);
-    padding: 40px;
-    max-width:600px;
-    margin:40px auto;
-    border-radius:$br;
-    box-shadow:0 4px 10px 4px rgba($form-bg,.3);
-  }
+  .section-padding
+    max-width: 600px
+    margin: auto
+    padding: 20px
 
-  .tab-group {
-    list-style:none;
-    padding:0;
-    margin:0 0 40px 0;
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-    li a {
-      display:block;
-      text-decoration:none;
-      padding:15px;
-      background:rgba($gray-light,.25);
-      color:$gray-light;
-      font-size:20px;
-      float:left;
-      width:50%;
-      text-align:center;
-      cursor:pointer;
-      transition:.5s ease;
-      &:hover {
-        background:$main-dark;
-        color:$white;
-      }
-  }
-    .active a {
-      background:$main;
-      color:$white;
-    }
-  }
+  .description
+    .article
+      padding: 20px 0
+      color: color-text(color(background), secondary)
 
-  h1 {
-    text-align:center;
-    color:$white;
-    font-weight:$thin;
-    margin:0 0 40px;
-  }
+  .signup
+    .contain-form
+      +contain()
 
-  label {
-    position:absolute;
-    transform:translateY(6px);
-    left:13px;
-    color:rgba($white,.5);
-    transition:all 0.25s ease;
-    -webkit-backface-visibility: hidden;
-    pointer-events: none;
-    font-size:22px;
-    .req {
-      margin:2px;
-      color:$main;
-    }
-  }
+    .field
+      padding: 3px 5px
+      +span(6, 6)
 
-  label.active {
-    transform:translateY(50px);
-    left:2px;
-    font-size:14px;
-    .req {
-      opacity:0;
-    }
-  }
+      &.padded
+        padding-bottom: 20px
 
-  label.highlight {
-    color:$white;
-  }
+      &.double
+        +span(3, 6)
 
-  input, textarea {
-    font-size:22px;
-    display:block;
-    width:100%;
-    height:100%;
-    padding:5px 10px;
-    background:none;
-    background-image:none;
-    border:1px solid $gray-light;
-    color:$white;
-    border-radius:0;
-    transition:border-color .25s ease, box-shadow .25s ease;
-    &:focus {
-    outline:0;
-    border-color:$main;
-    }
-  }
+    .radio-option
+      padding: 2px 5px
 
-  textarea {
-    border:2px solid $gray-light;
-    resize: vertical;
-  }
+    .terms-of-service
+      font-size: 10px
+      padding: 10px 0
+      max-width: 300px
 
-  .field-wrap {
-    position:relative;
-    margin-bottom:40px;
-  }
+    .submit
+      background: #34d934
+      background-image: linear-gradient(to bottom, #34d934, #4e9e26)
+      border-radius: 8px
+      border: none
+      color: #ffffff
+      font-size: 20px
+      padding: 8px 20px
+      text-decoration: none
+      cursor: pointer
 
-  .top-row {
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-  }
+      &:hover
+        background: #34d934
+        background-image: linear-gradient(to bottom, #34d934, #2dbd2d)
+        text-decoration: none
 
-    > div {
-      float:left;
-      width:48%;
-      margin-right:4%;
-      &:last-child {
-        margin:0;
-      }
-  }
-  }
 
-  .button {
-    border:0;
-    outline:none;
-    border-radius:0;
-    padding:15px 0;
-    font-size:2rem;
-    font-weight:$bold;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    background:$main;
-    color:$white;
-    transition:all.5s ease;
-    cursor: pointer;
-    -webkit-appearance: none;
-    &:hover, &:focus {
-      background:$main-dark;
-    }
-  }
+  +respond-under(w600)
+    .description, .signup
+      +span(6, 6)
 
-  .button-block {
-    display:block;
-    width:100%;
-  }
-
-  .forgot {
-    margin-top:-20px;
-    text-align:right;
-  }
 </style>

@@ -105,6 +105,7 @@
 
   .field
     display: inline-block
+    vertical-align: middle
     padding: (($nav-height - 34) /2) (($nav-height - 34) /8)
 
   +respond-under(w480)
