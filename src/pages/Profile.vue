@@ -1,6 +1,8 @@
 <template>
   <div id="profile" >
     profile
+    <br>
+    <router-link class="" to="/logout">Logout</router-link>
   </div>
 </template>
 

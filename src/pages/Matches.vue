@@ -4,7 +4,7 @@
       <div class="section head">
         <div class="search">
           <i class="material-icons search-icon">search</i>
-          <input v-model="options_search" class="search-input" type="text" placeholder="Search" @change="loadMatches">
+          <input v-model="options_search" class="input search-input" type="text" placeholder="Search" @change="loadMatches">
         </div>
         <div class="toggle_filter_options" @click="filter_options=!filter_options">
           <i class="material-icons">settings</i>
@@ -14,7 +14,7 @@
       <div class="section options" :class="{open: filter_options}">
         <div class="category individual-tag">
           <div class="text">Individual Tag:</div>
-          <input v-model="options_tags" type="text" @change="loadMatches">
+          <input v-model="options_tags" class="input" type="text" @change="loadMatches">
         </div>
 
         <div class="category sex">

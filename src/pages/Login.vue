@@ -111,7 +111,7 @@
 
           if (data.valid) {
             window.localStorage.cn_auth = data.token
-            this.$router.replace({ path: this.$root.$data.server.path })
+            this.$router.replace({ path: this.$root.$data.server.path === '/login' ? '/' : this.$root.$data.server.path })
           }
         }, (response) => { //
           // Error callback
