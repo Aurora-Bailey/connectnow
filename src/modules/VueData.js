@@ -17,10 +17,10 @@ let Data = {
     path: window.location.pathname,
 
     // /static/api/ || /api/
-    api: window.location.origin + (window.location.hostname === 'localhost' ? '/static/api/' : '/api/'),
+    api: window.location.origin + '/static/api/', // (window.location.hostname === 'localhost' ? '/static/api/' : '/api/'),
 
     // .txt || .php || ''
-    apiext: (window.location.hostname === 'localhost' ? '.txt' : '.php')
+    apiext: '.txt' // (window.location.hostname === 'localhost' ? '.txt' : '.php')
   },
   user: {
     name: ''
